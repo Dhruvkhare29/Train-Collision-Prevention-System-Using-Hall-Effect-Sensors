@@ -1,0 +1,169 @@
+Train Collision Prevention System using Hall Effect Sensors
+
+An Arduino-based railway safety prototype that detects train movement, controls railway signals, regulates train speed, and automatically stops the train under unsafe conditions using Hall Effect sensors.
+
+Overview
+
+Railway collisions are one of the major safety concerns in transportation systems. This project presents a low-cost embedded solution that continuously monitors train movement using Hall Effect sensors and automatically controls railway signals and train speed.
+
+The system uses an Arduino Uno as the main controller. Three Hall Effect sensors act as checkpoints along the track to determine the train's position. Based on sensor inputs, the controller updates signal indications, regulates the train's speed through PWM, and triggers an emergency stop if the train fails to reach the next checkpoint within a predefined time interval.
+
+The prototype also includes an automated railway crossing gate operated by a servo motor, demonstrating how embedded systems can improve both railway and road safety.
+
+Features
+
+✅ Real-time train detection
+
+✅ Automatic railway signal control
+
+✅ PWM-based train speed regulation
+
+✅ Emergency train stop
+
+✅ Timeout-based collision prevention
+
+✅ Automatic railway crossing gate
+
+✅ Low-cost embedded hardware
+
+✅ Educational railway automation prototype
+
+Hardware Components
+Component	Quantity
+Arduino Uno	1
+Hall Effect Sensors	3
+L298N Motor Driver	1
+DC Motor	1
+Servo Motor	1
+LEDs (Red, Yellow, Green)	9
+Breadboard	1
+Jumper Wires	As Required
+Power Supply	1
+Software
+Arduino IDE
+Embedded C
+System Architecture
+              Hall Effect Sensors
+                     │
+                     ▼
+             Arduino Uno Controller
+                     │
+      ┌──────────────┼──────────────┐
+      ▼              ▼              ▼
+ Railway LEDs     DC Motor      Servo Motor
+ (Signals)      (Train Speed) (Railway Gate)
+Working Principle
+Step 1
+
+The Hall Effect sensors continuously monitor the train's movement.
+
+↓
+
+Step 2
+
+Whenever a train crosses a checkpoint, the Arduino determines its current position.
+
+↓
+
+Step 3
+
+The railway signals are updated.
+
+🟢 Green → Track Clear
+🟡 Yellow → Caution
+🔴 Red → Stop
+
+↓
+
+Step 4
+
+The DC motor speed is adjusted using PWM.
+
+Safe Track
+
+Motor Speed = Full
+
+Caution Zone
+
+Motor Speed = Reduced
+
+Danger
+
+Motor = OFF
+
+↓
+
+Step 5
+
+The Arduino continuously checks the elapsed time using the millis() function.
+
+If the train does not reach the next Hall Effect sensor within 7 seconds,
+
+All signals become RED
+Motor stops
+Collision prevention routine activates
+
+↓
+
+Step 6
+
+A separate Hall Effect sensor detects an approaching train at the crossing.
+
+The servo motor lowers the gate automatically and raises it after the train passes.
+
+Pin Configuration
+Motor Driver
+Arduino	Module
+D9	ENA (PWM)
+D8	IN1
+D7	IN2
+Hall Sensors
+Arduino	Sensor
+D13	Sensor A
+D12	Sensor B
+D11	Sensor C
+D10	Gate Sensor
+Railway Signals
+Signal	Pins
+P	D2 D3 D4
+Q	D5 D6 D7
+R	A0 A1 A2
+Results
+
+The prototype successfully demonstrated:
+
+Accurate train detection using Hall Effect sensors
+Dynamic railway signal control
+PWM-based speed regulation
+Automatic emergency stop under unsafe conditions
+Automated railway crossing gate operation
+Reliable real-time embedded control
+Applications
+Railway Collision Prevention
+Smart Railway Signaling
+Railway Gate Automation
+Embedded Systems Education
+Industrial Automation
+Smart Transportation
+Railway Safety Research
+Future Enhancements
+GPS-based train tracking
+RFID train identification
+GSM emergency alerts
+Cloud monitoring dashboard
+IoT integration
+AI-based route optimization
+Wireless train-to-train communication
+Skills Demonstrated
+Embedded Systems
+Arduino Programming
+Embedded C
+Hall Effect Sensor Interfacing
+PWM Motor Control
+Servo Motor Control
+L298N Motor Driver
+Railway Automation
+Hardware Prototyping
+Real-Time Embedded Programming
+Circuit Design
+Safety System Development
